@@ -50,7 +50,7 @@ public class TileSpawnerScript : MonoBehaviour
             }
         }
 
-        currentTile = tilesList[Random.Range(0, tilesList.Count - 1)];
+        currentTile = tilesList[Random.Range(0, tilesList.Count)];
         currentTile.GetComponent<TileScript>().setState(TileScript.States.current);
         currentPos = tilePos[tilesList.IndexOf(currentTile)];
 
@@ -64,13 +64,13 @@ public class TileSpawnerScript : MonoBehaviour
             if (currentPath.Count == 0) availablePath.Remove(new Vector2(0,  1));
 
             if (availablePath.Count > 0) {
-                var direction = Random.Range(0, availablePath.Count - 1);
+                var direction = Random.Range(0, availablePath.Count);
                 
                 if (availablePath[direction] == repeatedPos) {
                     repeatCounter++;
                     if (repeatCounter > randomness && availablePath.Count > 1) {
                         availablePath.Remove(repeatedPos);
-                        direction = Random.Range(0, availablePath.Count - 1);
+                        direction = Random.Range(0, availablePath.Count);
                         repeatCounter = 0;
                     }
                 } else {
